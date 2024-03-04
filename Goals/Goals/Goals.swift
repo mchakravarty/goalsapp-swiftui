@@ -71,9 +71,19 @@ struct Goal: Identifiable, Equatable {
   func percentage(count: Int) -> Float { return Float(count) / Float(frequency) }
 }
 
-/// A goal and the progress towards that goal in an interval. Only active goals make progress.
-///
-typealias GoalProgress = (goal: Goal, progress: Int?)
+struct GoalProgress {
+  
+  /// The goal whose progress we track here.
+  ///
+  let goal: Goal
+
+  /// Progress towards a goal.
+  ///
+  /// If `nil`, the goal is not active. Otherwise, it specifies the number of times that the corresponding activity has
+  /// been undertaken.
+  ///
+  var progress: Int?
+}
 
 
 // MARK: -
@@ -93,10 +103,10 @@ final class GoalsModel {
 // MARK: -
 // MARK: Mock data
 
-let mockGoals: [GoalProgress] = [ (goal:  Goal(colour: .blue, title: "Yoga", interval: .monthly, frequency: 5),
-                                   progress: 3)
-                                , (goal:  Goal(colour: .orange, title: "Walks", interval: .weekly, frequency: 3),
-                                   progress: 0)
-                                , (goal:  Goal(colour: .purple, title: "Stretching", interval: .daily, frequency: 3),
-                                   progress: 1)
+let mockGoals: [GoalProgress] = [ GoalProgress(goal:  Goal(colour: .blue, title: "Yoga", interval: .monthly, frequency: 5),
+                                               progress: 3)
+                                , GoalProgress(goal:  Goal(colour: .orange, title: "Walks", interval: .weekly, frequency: 3),
+                                               progress: 0)
+                                , GoalProgress(goal:  Goal(colour: .purple, title: "Stretching", interval: .daily, frequency: 3),
+                                               progress: 1)
                                 ]
