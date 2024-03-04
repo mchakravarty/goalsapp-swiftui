@@ -8,6 +8,8 @@
 import SwiftUI
 
 
+/// A number format to render percentages.
+///
 private let percentageFormatter: NumberFormatter = {
   let formatter = NumberFormatter()
   formatter.multiplier  = NSNumber(value: 100)
@@ -15,8 +17,9 @@ private let percentageFormatter: NumberFormatter = {
   return formatter
   }()
 
-
-struct GoalSummaryView: View {
+/// A view that renders the progress towards a single goal.
+///
+struct GoalProgressView: View {
   let goalProgress: GoalProgress
 
   var body: some View {
@@ -33,9 +36,9 @@ struct GoalSummaryView: View {
 }
 
 #Preview {
-  GoalSummaryView(goalProgress: mockGoals[0])
+  GoalProgressView(goalProgress: mockGoals[0])
 }
 
 #Preview {
-  GoalSummaryView(goalProgress: mockGoals[1])
+  GoalProgressView(goalProgress: mockGoals[1])
 }
