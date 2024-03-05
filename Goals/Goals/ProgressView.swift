@@ -26,7 +26,7 @@ struct ProgressView: View {
       }
 
       Spacer()
-      
+
       Text("Tap any goal to record progress")
         .font(.footnote)
     }

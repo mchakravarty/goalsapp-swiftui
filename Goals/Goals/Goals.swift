@@ -43,7 +43,7 @@ enum GoalInterval: String {
 
 /// Specification of a single goal
 ///
-struct Goal: Identifiable, Equatable {
+struct Goal: Identifiable, Equatable, Hashable {
   let id: UUID                    // required by `Identifiable`
 
   var colour:     Color
@@ -58,7 +58,9 @@ struct Goal: Identifiable, Equatable {
     self.interval  = interval
     self.frequency = frequency
   }
-
+  
+  /// Create a default new goal.
+  ///
   init() { self = Goal(colour: .green, title: "New Goal", interval: .daily, frequency: 1) }
 
   var frequencyPerInterval: String {
@@ -83,7 +85,16 @@ struct GoalProgress {
   /// been undertaken.
   ///
   var progress: Int?
+
+  init(goal: Goal, progress: Int? = nil) {
+    self.goal      = goal
+    self.progress = progress
   }
+
+  /// Create a default new goal without progress.
+  ///
+  init() { self = GoalProgress(goal: Goal(), progress: nil) }
+}
 
 extension GoalProgress: Identifiable {
 

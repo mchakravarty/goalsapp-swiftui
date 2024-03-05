@@ -17,6 +17,7 @@
 		E712F7962B9631FA006EB378 /* Goals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712F7952B9631FA006EB378 /* Goals.swift */; };
 		E712F7982B9641DB006EB378 /* GoalProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712F7972B9641DB006EB378 /* GoalProgressView.swift */; };
 		E712F79C2B964A4E006EB378 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712F79B2B964A4E006EB378 /* ProgressView.swift */; };
+		E712F79E2B97924D006EB378 /* GoalsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712F79D2B97924D006EB378 /* GoalsListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		E712F7952B9631FA006EB378 /* Goals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goals.swift; sourceTree = "<group>"; };
 		E712F7972B9641DB006EB378 /* GoalProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressView.swift; sourceTree = "<group>"; };
 		E712F79B2B964A4E006EB378 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		E712F79D2B97924D006EB378 /* GoalsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				E712F76C2B962747006EB378 /* ContentView.swift */,
 				E712F79B2B964A4E006EB378 /* ProgressView.swift */,
 				E712F7972B9641DB006EB378 /* GoalProgressView.swift */,
+				E712F79D2B97924D006EB378 /* GoalsListView.swift */,
 				E712F76E2B962747006EB378 /* Assets.xcassets */,
 				E712F7702B962747006EB378 /* Goals.entitlements */,
 				E712F7712B962747006EB378 /* Preview Content */,
@@ -269,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E712F7982B9641DB006EB378 /* GoalProgressView.swift in Sources */,
+				E712F79E2B97924D006EB378 /* GoalsListView.swift in Sources */,
 				E712F79C2B964A4E006EB378 /* ProgressView.swift in Sources */,
 				E712F76D2B962747006EB378 /* ContentView.swift in Sources */,
 				E712F76B2B962747006EB378 /* GoalsApp.swift in Sources */,
