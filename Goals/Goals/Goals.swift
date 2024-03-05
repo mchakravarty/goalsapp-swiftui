@@ -72,7 +72,7 @@ struct Goal: Identifiable, Equatable {
 }
 
 struct GoalProgress {
-  
+
   /// The goal whose progress we track here.
   ///
   let goal: Goal
@@ -83,6 +83,13 @@ struct GoalProgress {
   /// been undertaken.
   ///
   var progress: Int?
+  }
+
+extension GoalProgress: Identifiable {
+
+  /// Inherits identify from the enclosed goal.
+  ///
+  var id: UUID { goal.id }
 }
 
 
@@ -97,6 +104,23 @@ final class GoalsModel {
   /// NB: The order of the elements in the array determines the order in which they are displayed.
   ///
   var goals: [GoalProgress] = []
+
+  init(goals: [GoalProgress] = []) {
+    self.goals = goals
+  }
+  
+  /// Advance the progress for the given goal.
+  ///
+  /// - Parameter goal: The goal whose progress we want to advance.
+  ///
+  func recordProgress(for goal: Goal) {
+
+    if let idx             = (goals.firstIndex{ $0.goal == goal }),
+       let currectProgress = goals[idx].progress
+    {
+      goals[idx].progress = currectProgress + 1
+    }
+  }
 }
 
 
@@ -109,4 +133,11 @@ let mockGoals: [GoalProgress] = [ GoalProgress(goal:  Goal(colour: .blue, title:
                                                progress: 0)
                                 , GoalProgress(goal:  Goal(colour: .purple, title: "Stretching", interval: .daily, frequency: 3),
                                                progress: 1)
+                                , GoalProgress(goal:  Goal(colour: .cyan, title: "Meditation", interval: .weekly, frequency: 2),
+                                               progress: 1)
                                 ]
+
+extension GoalsModel {
+
+  static var mock = GoalsModel(goals: mockGoals)
+}

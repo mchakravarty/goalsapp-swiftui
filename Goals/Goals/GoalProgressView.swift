@@ -20,7 +20,8 @@ private let percentageFormatter: NumberFormatter = {
 /// A view that renders the progress towards a single goal.
 ///
 struct GoalProgressView: View {
-  let goalProgress: GoalProgress
+  let goalProgress:   GoalProgress
+  let recordProgress: () -> Void
 
   var body: some View {
 
@@ -28,17 +29,23 @@ struct GoalProgressView: View {
         percentageString = percentageFormatter.string(from: NSNumber(value: percentage))
 
     VStack {
-      Text("\(percentageString ?? "0")")
-        .font(.title)
+
+      Button(action: recordProgress) {
+        Text("\(percentageString ?? "0")")
+          .font(.largeTitle)
+          .foregroundStyle(goalProgress.goal.colour)
+      }
+
       Text(goalProgress.goal.title)
+        .font(.headline)
     }
   }
 }
 
 #Preview {
-  GoalProgressView(goalProgress: mockGoals[0])
+  GoalProgressView(goalProgress: mockGoals[0], recordProgress: { })
 }
 
 #Preview {
-  GoalProgressView(goalProgress: mockGoals[1])
+  GoalProgressView(goalProgress: mockGoals[1], recordProgress: { })
 }
