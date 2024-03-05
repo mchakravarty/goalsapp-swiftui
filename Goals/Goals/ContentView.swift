@@ -7,18 +7,41 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+  let model: GoalsModel
+
   var body: some View {
-    VStack {
-      Image(systemName: "globe")
-        .imageScale(.large)
-        .foregroundStyle(.tint)
-      Text("Hello, world!")
+    TabView {
+
+      ProgressView(model: model)
+      .tabItem({ TabLabel(imageName: "timer.circle.fill", label: "Progress") })
+
+      VStack {
+        Text("Goals Tab")
+      }
+      .tabItem({ TabLabel(imageName: "list.bullet.circle.fill", label: "Goals") })
+
     }
-    .padding()
   }
 }
 
+struct TabLabel: View {
+  let imageName: String
+  let label:     String
+
+  var body: some View {
+    HStack {
+      Image(systemName: imageName)
+      Text(label)
+    }
+  }
+}
+
+
+// MARK: -
+// MARK: Previews
+
 #Preview {
-  ContentView()
+  ContentView(model: GoalsModel.mock)
 }
