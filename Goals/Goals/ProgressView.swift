@@ -16,7 +16,7 @@ struct ProgressView: View {
 
       ScrollView {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 30) {
-          ForEach(model.goals) { goalProgress in
+          ForEach(model.goals.filter{ $0.progress != nil }) { goalProgress in
 
             GoalProgressView(goalProgress: goalProgress) {
               model.recordProgress(for: goalProgress.goal)

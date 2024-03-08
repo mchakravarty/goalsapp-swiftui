@@ -11,13 +11,9 @@ import SwiftUI
 // MARK: -
 // MARK: Model data structures
 
-/// The set of colours that can be used to render goals.
-///
-let goalColours: [Color] = [.blue, .cyan, .green, .yellow, .orange, .red, .purple]
-
 /// Intervals at which activities are to be repeated.
 ///
-enum GoalInterval: String {
+enum GoalInterval: String, CaseIterable {
   case daily   = "daily"
   case weekly  = "weekly"
   case monthly = "monthly"
@@ -39,6 +35,10 @@ enum GoalInterval: String {
     }
     return result
   }
+}
+
+extension GoalInterval: Identifiable {
+  var id: String { self.rawValue }
 }
 
 /// Specification of a single goal
@@ -120,13 +120,39 @@ final class GoalsModel {
     self.goals = goals
   }
   
+  /// Remove the given goal.
+  ///
+  /// - Parameter goal: The goal that is to be removed.
+  ///
+  func remove(goal: Goal) {
+    goals.removeAll{ $0.goal.id == goal.id }
+  }
+  
+  /// Update a goal's detail information.
+  ///
+  /// - Parameters:
+  ///   - goal: The new goal details.
+  ///   - transferProgress: Whether to transfer the current progress to the new goal.
+  ///
+  /// If the goal details remain unchanged, we always transfer current progress.
+  ///
+  func update(goal: Goal, transferProgress: Bool) {
+
+    if let idx = (goals.firstIndex{ $0.goal.id == goal.id }),
+       goals[idx].goal != goal
+    {
+      let newProgress: Int? = if transferProgress { goals[idx].progress } else { nil }
+      goals[idx] = GoalProgress(goal: goal, progress: newProgress)
+    }
+  }
+
   /// Advance the progress for the given goal.
   ///
   /// - Parameter goal: The goal whose progress we want to advance.
   ///
   func recordProgress(for goal: Goal) {
 
-    if let idx             = (goals.firstIndex{ $0.goal == goal }),
+    if let idx             = (goals.firstIndex{ $0.goal.id == goal.id }),
        let currectProgress = goals[idx].progress
     {
       goals[idx].progress = currectProgress + 1

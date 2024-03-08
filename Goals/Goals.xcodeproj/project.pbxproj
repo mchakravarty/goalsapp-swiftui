@@ -18,6 +18,7 @@
 		E712F7982B9641DB006EB378 /* GoalProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712F7972B9641DB006EB378 /* GoalProgressView.swift */; };
 		E712F79C2B964A4E006EB378 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712F79B2B964A4E006EB378 /* ProgressView.swift */; };
 		E712F79E2B97924D006EB378 /* GoalsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712F79D2B97924D006EB378 /* GoalsListView.swift */; };
+		E7EA49CD2B98C5C400ACEF19 /* GoalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EA49CC2B98C5C400ACEF19 /* GoalDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		E712F7972B9641DB006EB378 /* GoalProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressView.swift; sourceTree = "<group>"; };
 		E712F79B2B964A4E006EB378 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		E712F79D2B97924D006EB378 /* GoalsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsListView.swift; sourceTree = "<group>"; };
+		E7EA49CC2B98C5C400ACEF19 /* GoalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				E712F79B2B964A4E006EB378 /* ProgressView.swift */,
 				E712F7972B9641DB006EB378 /* GoalProgressView.swift */,
 				E712F79D2B97924D006EB378 /* GoalsListView.swift */,
+				E7EA49CC2B98C5C400ACEF19 /* GoalDetailView.swift */,
 				E712F76E2B962747006EB378 /* Assets.xcassets */,
 				E712F7702B962747006EB378 /* Goals.entitlements */,
 				E712F7712B962747006EB378 /* Preview Content */,
@@ -205,7 +208,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					E712F7662B962747006EB378 = {
 						CreatedOnToolsVersion = 15.2;
@@ -273,6 +276,7 @@
 			files = (
 				E712F7982B9641DB006EB378 /* GoalProgressView.swift in Sources */,
 				E712F79E2B97924D006EB378 /* GoalsListView.swift in Sources */,
+				E7EA49CD2B98C5C400ACEF19 /* GoalDetailView.swift in Sources */,
 				E712F79C2B964A4E006EB378 /* ProgressView.swift in Sources */,
 				E712F76D2B962747006EB378 /* ContentView.swift in Sources */,
 				E712F76B2B962747006EB378 /* GoalsApp.swift in Sources */,
@@ -347,6 +351,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -408,6 +413,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -435,6 +441,7 @@
 				CODE_SIGN_ENTITLEMENTS = Goals/Goals.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Goals/Preview Content\"";
 				DEVELOPMENT_TEAM = CW7SX798PS;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -474,6 +481,7 @@
 				CODE_SIGN_ENTITLEMENTS = Goals/Goals.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Goals/Preview Content\"";
 				DEVELOPMENT_TEAM = CW7SX798PS;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -512,6 +520,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = CW7SX798PS;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
@@ -535,6 +544,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = CW7SX798PS;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
@@ -557,6 +567,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = CW7SX798PS;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
@@ -579,6 +590,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = CW7SX798PS;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;

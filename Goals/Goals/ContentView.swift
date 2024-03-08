@@ -17,9 +17,7 @@ struct ContentView: View {
       ProgressView(model: model)
       .tabItem({ TabLabel(imageName: "timer.circle.fill", label: "Progress") })
 
-      VStack {
-        Text("Goals Tab")
-      }
+      GoalsListView(model: model)
       .tabItem({ TabLabel(imageName: "list.bullet.circle.fill", label: "Goals") })
 
     }

@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct GoalsListView: View {
-  let model: GoalsModel
+  var model: GoalsModel
 
   var body: some View {
 
@@ -30,7 +30,8 @@ struct GoalsListView: View {
       }
       .navigationTitle("Goals")
       .navigationDestination(for: Goal.self) { goal in
-        Text(goal.title)
+
+        GoalDetailView(model: model, goal: goal)
       }
 
     }
