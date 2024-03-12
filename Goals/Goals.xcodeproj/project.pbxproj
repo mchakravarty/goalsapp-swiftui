@@ -55,6 +55,7 @@
 		E712F79B2B964A4E006EB378 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		E712F79D2B97924D006EB378 /* GoalsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsListView.swift; sourceTree = "<group>"; };
 		E7EA49CC2B98C5C400ACEF19 /* GoalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailView.swift; sourceTree = "<group>"; };
+		E7EA49CF2BA0FEA000ACEF19 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +86,7 @@
 		E712F75E2B962746006EB378 = {
 			isa = PBXGroup;
 			children = (
+				E7EA49CF2BA0FEA000ACEF19 /* Playground.playground */,
 				E712F7692B962747006EB378 /* Goals */,
 				E712F77B2B962748006EB378 /* GoalsTests */,
 				E712F7852B962748006EB378 /* GoalsUITests */,
