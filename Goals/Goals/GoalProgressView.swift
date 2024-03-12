@@ -17,6 +17,61 @@ private let percentageFormatter: NumberFormatter = {
   return formatter
   }()
 
+/// Percentage rendered as text.
+///
+struct PercentageTextView: View {
+  let percentage: Float
+  let colour:     Color
+
+  var body: some View {
+
+    let percentageString = percentageFormatter.string(from: NSNumber(value: percentage))
+
+    Text("\(percentageString ?? "0")")
+      .font(.largeTitle)
+      .foregroundStyle(colour)
+  }
+}
+
+/// Percentage with circular chart.
+///
+struct PercentageView: View {
+  let percentage: Float
+  let colour:     Color
+
+  @State var chartPercentage: Float = 0
+
+  var body: some View {
+
+    let percentageString = percentageFormatter.string(from: NSNumber(value: percentage))
+
+    ZStack {
+
+      Circle()
+        .foregroundColor(colour.opacity(0.2))
+        .frame(width: 80, height: 80)
+
+      Circle()
+        .trim(from: 0, to: CGFloat(chartPercentage))
+        .stroke(.angularGradient(colour.gradient,
+                                 startAngle: .degrees(0),
+                                 endAngle: .degrees(360 * Double(chartPercentage))),
+                style: StrokeStyle(lineWidth: 10, lineCap: .round))
+        .rotationEffect(.degrees(-90))
+        .frame(width: 80, height: 80)
+        .animation(.easeInOut, value: chartPercentage)
+
+      Text("\(percentageString ?? "0")")
+        .font(.headline)
+        .foregroundStyle(colour)
+
+    }
+    .padding(10)
+    .onAppear{ chartPercentage = percentage }
+    .onChange(of: percentage){ chartPercentage = percentage }
+  }
+}
+
 /// A view that renders the progress towards a single goal.
 ///
 struct GoalProgressView: View {
@@ -25,15 +80,12 @@ struct GoalProgressView: View {
 
   var body: some View {
 
-    let percentage       = goalProgress.goal.percentage(count: goalProgress.progress ?? 0),
-        percentageString = percentageFormatter.string(from: NSNumber(value: percentage))
-
+    let count = goalProgress.progress ?? 0
     VStack {
 
       Button(action: recordProgress) {
-        Text("\(percentageString ?? "0")")
-          .font(.largeTitle)
-          .foregroundStyle(goalProgress.goal.colour)
+        PercentageView(percentage: goalProgress.goal.percentage(count: count),
+                       colour: goalProgress.goal.colour)
       }
 
       Text(goalProgress.goal.title)
