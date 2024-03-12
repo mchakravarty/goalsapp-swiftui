@@ -11,9 +11,11 @@ import SwiftUI
 struct GoalDetailView: View {
   let model: GoalsModel
 
-  @State var goal: Goal
+  @State var goal:     Goal
+  @State var isActive: Bool
 
-  @State var keepProgress: Bool = false
+  @State var keepProgress:     Bool = false
+  @State var deletingProgress: Bool = false
 
   var body: some View {
 
@@ -34,10 +36,34 @@ struct GoalDetailView: View {
           GoalFrequencySelectionView(goal: $goal, keepProgress: $keepProgress)
             .onDisappear {
               model.update(goal: goal, transferProgress: keepProgress)
+              isActive = model.progress(of: goal) != nil
             }
         }
 
+        Toggle("Active", isOn: $isActive)
+          .onChange(of: isActive) {
+            if let currentProgress = model.progress(of: goal),
+               currentProgress > 0,
+               !isActive
+            {
+              deletingProgress = true
+            } else {
+              model.set(goal: goal, activity: isActive)
+            }
+          }
       }
+    }
+    .alert("Discard progress?", isPresented: $deletingProgress) {
+
+      Button("Discard \(goal.title) progress", role: .destructive) {
+        model.set(goal: goal, activity: false)
+      }
+      Button("Cancel", role: .cancel) {
+        isActive = true
+      }
+
+    } message: {
+      Text("Deactivating a goal discards its current progress.")
     }
   }
 }
@@ -73,7 +99,7 @@ struct GoalFrequencySelectionView: View {
 }
 
 #Preview {
-  GoalDetailView(model: GoalsModel.mock, goal: mockGoals[0].goal)
+  GoalDetailView(model: GoalsModel.mock, goal: mockGoals[0].goal, isActive: true)
 }
 
 #Preview {

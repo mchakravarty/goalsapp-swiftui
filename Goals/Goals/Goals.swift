@@ -145,6 +145,13 @@ final class GoalsModel {
       goals[idx] = GoalProgress(goal: goal, progress: newProgress)
     }
   }
+  
+  /// Determine the progress of the given goal.
+  ///
+  /// - Parameter goal: The goal whose progress we want to determine.
+  /// - Returns: The progress of the goal or `nil` if the goal is inactive or does not exist.
+  /// 
+  func progress(of goal: Goal) -> Int? { goals.first{ $0.goal.id == goal.id }?.progress }
 
   /// Advance the progress for the given goal.
   ///
@@ -156,6 +163,21 @@ final class GoalsModel {
        let currectProgress = goals[idx].progress
     {
       goals[idx].progress = currectProgress + 1
+    }
+  }
+  
+  /// Set a goal's activity status.
+  ///
+  /// - Parameters:
+  ///   - goal: The goal whose activity status is to be set.
+  ///   - activity: The goal is set to active (with no progress) if `activity == true`; otherwise, it is set to being
+  ///       inactive.
+  ///       
+  func set(goal: Goal, activity: Bool) {
+
+    if let idx = (goals.firstIndex{ $0.goal.id == goal.id }) {
+      let progress: Int? = if activity { 0 } else { nil }
+      goals[idx].progress = progress
     }
   }
 }
