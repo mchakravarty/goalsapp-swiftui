@@ -41,7 +41,9 @@ struct GoalsListView: View {
         }
       }
       .navigationTitle("Goals")
+#if os(iOS)
       .toolbar{ EditButton() }
+#endif
       .navigationDestination(for: Goal.self) { goal in
 
         GoalDetailView(model: model, goal: goal, isActive: model.progress(of: goal) != nil)
