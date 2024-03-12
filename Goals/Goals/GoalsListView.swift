@@ -20,8 +20,20 @@ struct GoalsListView: View {
         ForEach(model.goals) { goalProgress in
 
           NavigationLink(value: goalProgress.goal) {
-            Text(goalProgress.goal.title)
+            HStack {
+              Text(goalProgress.goal.title)
+              Spacer()
+              let actvityStatus = if goalProgress.progress == nil { "inactive" } else { "active" }
+              Text(actvityStatus)
+                .foregroundStyle(.secondary)
+            }
           }
+        }
+        .onDelete { indexSet in
+          model.goals.remove(atOffsets: indexSet)
+        }
+        .onMove { indices, newOffset in
+          model.goals.move(fromOffsets: indices, toOffset: newOffset)
         }
 
         Button("Add new goal") {
@@ -29,6 +41,7 @@ struct GoalsListView: View {
         }
       }
       .navigationTitle("Goals")
+      .toolbar{ EditButton() }
       .navigationDestination(for: Goal.self) { goal in
 
         GoalDetailView(model: model, goal: goal)
