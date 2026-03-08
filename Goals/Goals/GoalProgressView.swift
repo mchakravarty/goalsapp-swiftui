@@ -67,8 +67,7 @@ struct PercentageView: View {
 
     }
     .padding(10)
-    .onAppear{ chartPercentage = percentage }
-    .onChange(of: percentage){ chartPercentage = percentage }
+    .onChange(of: percentage, initial: true){ chartPercentage = percentage }
   }
 }
 
