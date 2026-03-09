@@ -160,9 +160,9 @@ public final class GoalsModel {
   public func recordProgress(for goal: Goal) {
 
     if let idx             = (goals.firstIndex{ $0.goal.id == goal.id }),
-       let currectProgress = goals[idx].progress
+       let currentProgress = goals[idx].progress
     {
-      goals[idx].progress = currectProgress + 1
+      goals[idx].progress = currentProgress + 1
     }
   }
   
