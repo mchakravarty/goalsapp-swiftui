@@ -94,7 +94,8 @@ struct GoalProgressView: View {
 }
 
 #Preview {
-  GoalProgressView(goalProgress: mockGoals[0], recordProgress: { })
+  let goalProgress = GoalProgress(goal: mockGoals[0].goal, progress: 3) 
+  GoalProgressView(goalProgress: goalProgress, recordProgress: { })
 }
 
 #Preview {

@@ -176,7 +176,7 @@ public final class GoalsModel {
   public func set(goal: Goal, activity: Bool) {
 
     if let idx = (goals.firstIndex{ $0.goal.id == goal.id }) {
-      let progress: Int? = if activity { 0 } else { nil }
+      let progress: Int? = if activity { goals[idx].progress ?? 0 } else { nil }
       goals[idx].progress = progress
     }
   }
